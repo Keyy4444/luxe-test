@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react"
 import dynamic from 'next/dynamic';
-const Locate = dynamic(() => import("./Locate.tsx"), { ssr: false });
+const Locate = dynamic(() => import("../../components/Locate.tsx"), { ssr: false });
 import { createPost } from "./createPost.ts"
 import { LatLngLiteral } from 'leaflet'
 

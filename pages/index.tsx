@@ -25,11 +25,11 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function Home(props) {
+export default function Home({ posts }: { posts: Post[] }) {
   return (
     <div>
       <Navbar/>
-      <MapComponent posts={props.posts}/>
+      <MapComponent posts={posts}/>
     </div>
   )
 }
