@@ -63,6 +63,14 @@ export default function MapComponent({ posts }: { posts: Post[]}) {
 
     return (
         <div className="flex h-screen place-content-center">
+            <p>break</p>
+            <ul>
+                {posts.map((post: Post) => (
+                <p>
+                    {post.title}
+                </p>
+                ))}
+            </ul>
             <MapContainer center={[48.407, 31.91]} zoom={6} className="w-5/6 z-0">
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

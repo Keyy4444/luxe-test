@@ -30,6 +30,13 @@ export default function Home({ posts }: { posts: Post[] }) {
   return (
     <div>
       <Navbar/>
+      <ul>
+        {posts.map((post: Post) => (
+          <p>
+            {post.title}
+          </p>
+        ))}
+      </ul>
       <MapComponent posts={posts}/>
     </div>
   )
