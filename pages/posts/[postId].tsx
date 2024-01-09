@@ -21,7 +21,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function PostPage({ posts }: { posts: Post[] }, { params }: { params: {postId: string}}) {
 
-  const post = posts.find(post => post.id === params.postId as number)
+    const id = parseInt(params.postId)
+  const post = posts.find(post => post.id === id)
 
   return (
     <div>
