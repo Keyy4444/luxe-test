@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma';
 import { Inter } from 'next/font/google'
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import ReactDOM from 'react-dom/client'
@@ -19,7 +19,7 @@ type Post = {
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts: Post[] = await prisma.posts.findMany();
   return {
     props: { posts },

@@ -1,6 +1,6 @@
 import prisma from '../../lib/prisma'
 import PostCard from '../../components/PostCard'
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Navbar from '@/components/Navbar';
 
 type Post = {
@@ -14,7 +14,7 @@ type Post = {
   imagelink: string;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts: Post[] = await prisma.posts.findMany();
   return {
     props: { posts },
