@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
+import ReactDOM from 'react-dom/client'
 const MapComponent = dynamic(() => import("../components/MapComponent"), { ssr: false });
 
 type Post = {

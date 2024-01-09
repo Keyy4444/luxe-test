@@ -85,24 +85,24 @@ export default function AddPost() {
             setMissingPost(true);   // Reminds the user to fill in all the required forms
             return;
         } 
-        try {
-            const response = await fetch('/api/posts/createPost', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newPost),
-              });
+        // try {
+        //     const response = await fetch('/api/posts/createPost', {
+        //         method: 'POST',
+        //         headers: {
+        //           'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(newPost),
+        //       });
           
-              if (response.ok) {
-                console.log("all good");
+        //       if (response.ok) {
+        //         console.log("all good");
                 
-              } else {
-                console.log("all bad");
-              }
-            } catch (error) {
-              console.error('Error creating post:', error);
-            }
+        //       } else {
+        //         console.log("all bad");
+        //       }
+        //     } catch (error) {
+        //       console.error('Error creating post:', error);
+        //     }
         }
 
 
