@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function PostPage(props) {
+export default function PostPage({ posts }: { posts: Post[] }) {
 
 
   return (
@@ -29,7 +29,7 @@ export default function PostPage(props) {
       <Navbar/>
         <h2 className="text-gray-700 font-bold text-4xl self-center ml-10 mt-10">All Posts</h2>
         <div className="flex flex-wrap">
-                {props.posts.map((post) => (
+                {posts.map((post) => (
                     <div className="w-1/5 p-2" key={post.id}>
                         <PostCard post={post}/>
                     </div>
