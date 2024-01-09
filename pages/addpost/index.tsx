@@ -1,10 +1,10 @@
 'use client'
 
+import prisma from '../../lib/prisma'
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react"
 import dynamic from 'next/dynamic';
 const Locate = dynamic(() => import("../../components/Locate.tsx"), { ssr: false });
-import { createPost } from "./createPost.ts"
 import { LatLngLiteral } from 'leaflet'
 
 interface Post {
@@ -16,7 +16,6 @@ interface Post {
     price: string;
     imagelink: string;
 };
-
 
 export default function AddPost() {
     const [showMap, setShowMap] = useState<boolean>(false);
@@ -81,14 +80,30 @@ export default function AddPost() {
         });
     }
 
-    const onSubmit = (e: any) => {
+    const onSubmit = async (e: any) => {
         if (!newPost.title || !newPost.price || !newPost.category || !newPost.imagelink) {
             setMissingPost(true);   // Reminds the user to fill in all the required forms
             return;
-        } else {
-            createPost(newPost); 
+        } 
+        try {
+            const response = await fetch('/api/posts/createPost', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newPost),
+              });
+          
+              if (response.ok) {
+                console.log("all good");
+                
+              } else {
+                console.log("all bad");
+              }
+            } catch (error) {
+              console.error('Error creating post:', error);
+            }
         }
-    }
 
 
     return (
@@ -133,7 +148,7 @@ export default function AddPost() {
                             <button type="button" onClick={toggleMap} className="bg-blue-900 text-white rounded-md h-14 w-2/5 flex items-center justify-center"><span><img className="h-8 w-auto" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png     " alt="Your Company"/></span>Set Location</button>
                             </form>
                             {(newPost.title && newPost.price && newPost.category && newPost.imagelink) ? (
-                            <Link href="/posts">
+                            <Link href="/success">
                                 <button type="submit" onClick={onSubmit} className="bg-blue-900 text-white right-0 rounded-md ml-16 w-44 h-14 px-4 py-2 hover:bg-blue-600">Submit</button>
                             </Link>
                             ) : (
