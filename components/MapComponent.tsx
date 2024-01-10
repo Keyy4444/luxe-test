@@ -34,7 +34,6 @@ export default function MapComponent({ posts }: { posts: Post[]}) {
     const clickMarker = (id: number) => {
         setShowSelectedMarker(true);
         setPostById(posts.find(post => post.id === id));
-        console.log(id);
     }
 
     // Gets bounds to update the list of posts on move and zoom

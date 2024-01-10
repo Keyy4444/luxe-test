@@ -56,7 +56,6 @@ export default function AddPost() {
     const toggleMap = (e: any) => {
         e.preventDefault()
         setShowMap(!showMap);
-        console.log(showMap);
     }
 
     const confirmLocation = () => {
@@ -94,12 +93,7 @@ export default function AddPost() {
                 body: JSON.stringify(newPost),
               });
           
-              if (response.ok) {
-                console.log("all good");
-                
-              } else {
-                console.log("all bad");
-              }
+
             } catch (error) {
               console.error('Error creating post:', error);
             }
